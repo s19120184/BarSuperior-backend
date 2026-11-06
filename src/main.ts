@@ -11,6 +11,7 @@ async function bootstrap() {
   //  HABILITAR CORS
   app.enableCors({
     origin: [
+       process.env.FRONTEND_URL,
       'http://localhost:3000', // Puerto habitual de Next.js
       'http://localhost:4321', // Por si tienes otro puerto local
       'http://127.0.0.1:3000',
