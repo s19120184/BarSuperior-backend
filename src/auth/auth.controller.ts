@@ -22,7 +22,7 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('registrar')
-  @Auth(ValidRoles.admin)
+  // @Auth(ValidRoles.admin)
   create(@Body() createAuthDto: CreateUserDto) {
     return this.authService.create(createAuthDto);
   }

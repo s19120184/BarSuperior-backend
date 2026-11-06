@@ -15,8 +15,6 @@ import { SeedModule } from './seed/seed.module';
 import { TicketsModule } from './tickets/tickets.module';
 import { FilesModule } from './files/files.module';
 
-
-
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -24,51 +22,48 @@ import { FilesModule } from './files/files.module';
     //configuracin typeOrm
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: process.env.HOST,
-      port: +process.env.PORT_DB!,
-      database: process.env.POSTGRES_DB,
-      username: process.env.POSTGRES_USER,
-      password: process.env.POSTGRES_PASSWORD,
+      url: process.env.NEON_SQL_URL,
+      // host: process.env.HOST,
+      // port: +process.env.PORT_DB!,
+      // database: process.env.POSTGRES_DB,
+      // username: process.env.POSTGRES_USER,
+      // password: process.env.POSTGRES_PASSWORD,
       autoLoadEntities: true,
-      synchronize: true,//todo:desactivar en produccion
+      synchronize: true, //todo:desactivar en produccion
+      ssl: {
+        rejectUnauthorized: false,
+      },
+      extra: {
+        ssl: {
+          rejectUnauthorized: false,
+        },
+      },
     }),
     //para servir contenido estatico pnpm install @nestjs/serve-static
     ServeStaticModule.forRoot({
-        rootPath: join(__dirname,'..', 'public'),}),
-    
-    
+      rootPath: join(__dirname, '..', 'public'),
+    }),
+
     AuthModule,
-    
-    
+
     CatalogoInventarioModule,
-    
-    
+
     ExpensesModule,
-    
-    
+
     TablesModule,
-    
-    
+
     OrdersModule,
-    
-    
+
     PaymentsModule,
-    
-    
+
     TicketsModule,
-    
-    
+
     CashRegisterModule,
-    
-    
+
     SeedModule,
 
     FilesModule,
-
-
   ],
-
-  
 
   controllers: [],
   providers: [],
