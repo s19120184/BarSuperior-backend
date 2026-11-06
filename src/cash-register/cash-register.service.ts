@@ -16,6 +16,8 @@ import { CreateCashMovementDto } from './dtos/create-movement.dto';
 import { CloseShiftDto } from './dtos/close-shift.dto';
 import { QueryShiftsDto } from './dtos/query-shifts.dto';
 
+
+//esto es un comenteario
 @Injectable()
 export class CashRegisterService {
   constructor(
